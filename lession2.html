@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myname">
+    <head>
+        <title>Filter Page</title>
+        <script src="angular.min.js"></script>
+        <script src="basic1.js"></script>
+        <style>
+            table{
+                border:2px solid black;
+                border-collapse: collapse;
+            }
+            table,th,td{
+                border: 2px solid black;
+            }
+        
+        </style>
+    </head>
+    <body ng-controller="myctrl">
+        <table ng-model="changeColumn">
+            <div class="header">
+            <tr>
+                <th ng-click="changeColumn('name')">Name<div ng-class='changeArrow("name")'></div></th>
+                <th ng-click="changeColumn('salary')">Salary<div ng-class='changeArrow("salary")'></div></th>
+                <th ng-click="changeColumn('DOB')">DOB<div ng-class='changeArrow("DOB")'></div></th>
+                <th ng-click="changeColumn('gender')">Gender<div ng-class='changeArrow("gender")'></div></th>
+            </tr>
+            </div>
+            <tr ng-repeat="emp in employee | orderBy : columName:order">
+                 <td>{{emp.name}}</td>
+                 <td>{{emp.salary}}</td>
+                 <td>{{emp.DOB | date:"dd/mm/yy"}}</td>
+                 <td>{{emp.gender}}</td>
+            </tr>
+        </table>
+    </body>
+</html>
